@@ -366,4 +366,21 @@ public class LinkedList {
         fstPtr.setNext(slwPtr.getNext());
         slwPtr.setNext(head);
     }
+
+    public ListNode exchangeAdjacent(ListNode head){
+        ListNode temp = new ListNode(0);
+        temp.setNext(head);
+        ListNode prev=temp,curr=head;
+        while(curr!=null&&curr.getNext()!=null){
+            ListNode tmp = curr.getNext().getNext();
+            curr.getNext().setNext(prev.getNext());
+            prev.setNext(curr.getNext());
+            curr.setNext(tmp);
+            prev=curr;
+            curr=prev.getNext();
+        }
+        return temp.getNext();
+    }
+
+
 }
